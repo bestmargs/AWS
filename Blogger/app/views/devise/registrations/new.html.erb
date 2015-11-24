@@ -1,29 +1,52 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<% if devise_error_messages! != "" %>
+    <div class="small-container alert alert-danger">
+        <%= devise_error_messages! %>
+    </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="small-container well">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <h2>Create Account</h2>
+
+        <div class="margin-top-20">
+            <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", autofocus: true %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.text_area :about_me, class: "form-control", placeholder: "About Me" %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.file_field :avatar, as: :file %>
+        </div>
+
+        <div class="margin-top-20">
+            <%= f.submit "Create Account", class: "btn btn-primary" %>
+        </div>
+
+        <div class="margin-top-10">
+            <%= render "devise/shared/links" %>
+        </div>
+    <% end %>
+</div>

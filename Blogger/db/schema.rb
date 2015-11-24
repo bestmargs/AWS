@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124145434) do
+ActiveRecord::Schema.define(version: 20151124151459) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "comment"
+    t.text     "comment_text"
     t.string   "post_id"
     t.string   "integer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(version: 20151124145434) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
